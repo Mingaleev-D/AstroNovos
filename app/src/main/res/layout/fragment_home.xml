@@ -4,22 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--    Essa variável permite vincular campos do ViewModel a elementos da UI -->
+
         <variable
             name="viewModel"
             type="com.example.astronovos.ui.fragments.home.HomeViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.home.HomeFragment"
-        >
+        tools:context=".ui.fragments.home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/medium_gray">
+
+            <TextView
+                android:id="@+id/textHeyTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arlrdbd"
+                android:text="@{viewModel.textHey}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="@{viewModel.textHey.empty ? View.GONE:View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.65999997"
+                tools:text=" Test text" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_rv"
@@ -37,12 +54,12 @@
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:visibility="visible"
                 android:visibility="gone"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="@{viewModel.progressBarVisible ? View.VISIBLE : View.GONE}" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

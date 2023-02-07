@@ -1,9 +1,11 @@
 package com.example.astronovos.data.repository
 
+import com.example.astronovos.core.RemoteException
 import com.example.astronovos.data.model.Post
 import com.example.astronovos.data.services.AstroNovosService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
 
 /**
  * @author : Mingaleev D
@@ -16,9 +18,13 @@ class PostRepositoryImpl(
 ) : PostRepository {
 
    override suspend fun listPosts(): Flow<List<Post>> = flow {
+      try {
+         val postList = service.listPosts()
+         emit(postList)
+      }catch (ex:HttpException){
+         throw RemoteException("Unable to connect")
+      }
 
-      val postList = service.listPosts()
-      emit(postList)
 
    }
 }
