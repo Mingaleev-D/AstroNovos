@@ -91,6 +91,7 @@ dependencies {
     implementation "io.insert-koin:koin-annotations:$koin_ksp_version"
     kapt "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"
     implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-test-junit4:$koin_version"
     //Moshi
     implementation("com.squareup.moshi:moshi:1.13.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
