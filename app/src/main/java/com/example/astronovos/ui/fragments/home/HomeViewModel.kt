@@ -4,13 +4,13 @@ import androidx.lifecycle.*
 import com.example.astronovos.core.RemoteException
 import com.example.astronovos.core.State
 import com.example.astronovos.data.model.Post
-import com.example.astronovos.data.repository.PostRepository
+import com.example.astronovos.domain.GetLatestPostsUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository:PostRepository
+    private val getLatestPostsUseCase: GetLatestPostsUseCase
 ) : ViewModel() {
 
    private val _progressBarVisible = MutableLiveData<Boolean>()
@@ -40,7 +40,7 @@ class HomeViewModel(
 
    private fun fetchPosts() {
       viewModelScope.launch {
-         repository.listPosts()
+         getLatestPostsUseCase.execute()
             .onStart {
                _listPost.postValue(State.Loading)
             }

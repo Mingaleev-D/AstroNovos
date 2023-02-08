@@ -2,6 +2,7 @@ package com.example.astronovos
 
 import android.app.Application
 import com.example.astronovos.data.koin.DataModule
+import com.example.astronovos.domain.koin.DomainModule
 import com.example.astronovos.ui.koin.UiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -22,5 +23,6 @@ class MyApp:Application() {
 
       UiModule.load()
       DataModule.load()
+      DomainModule.load()
    }
 }
