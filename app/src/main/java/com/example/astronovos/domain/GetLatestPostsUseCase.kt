@@ -12,9 +12,11 @@ import kotlinx.coroutines.flow.Flow
 
 class GetLatestPostsUseCase(
     private val repository:PostRepository
-) :UseCase<List<Post>>(){
+) :UseCase.NoParam<List<Post>>(){
 
    override suspend fun execute(): Flow<List<Post>> {
       return repository.listPosts()
    }
+
+
 }
