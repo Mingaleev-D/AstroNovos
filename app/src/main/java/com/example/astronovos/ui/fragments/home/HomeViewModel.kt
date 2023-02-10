@@ -40,7 +40,7 @@ class HomeViewModel(
 
    private fun fetchPosts() {
       viewModelScope.launch {
-         getLatestPostsUseCase.execute()
+         getLatestPostsUseCase()
             .onStart {
                _listPost.postValue(State.Loading)
             }
